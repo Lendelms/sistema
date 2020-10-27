@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Login Sistema</title>
+</head>
+<body>
+	<form action="/" method="POST">
+		<p>
+		<label>Usuário:</label>
+		<input type="text" name="usuario" id="usuario" value="{{ usuario }}">
+		</p>
+		<p>
+		<label>Senha:</label>
+		<input type="password" name="senha" id="senha" value="{{ senha }}">
+		</p>
+		<input type="submit" name="login" value="Entrar">
+		<input type="reset" name="limpar" value="Reset">
+	</form>
+	<div>
+		<center> {{ mensagem }} </center>
+	</div>
+</body>
+</html>
