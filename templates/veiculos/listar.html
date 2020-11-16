@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lista de veiculos cadastrados</title>
+</head>
+<body>
+	<ol>
+		{% for veiculo in lista_veiculos %}
+		<li>
+			{{ veiculo }}
+		</li>
+		{% endfor %}
+	</ol>
+
+</body>
+</html>

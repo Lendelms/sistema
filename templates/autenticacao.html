@@ -6,6 +6,7 @@
 </head>
 <body>
 	<form action="/" method="POST">
+		{% csrf_token %}
 		<p>
 		<label>Usuário:</label>
 		<input type="text" name="usuario" id="usuario" value="{{ usuario }}">
