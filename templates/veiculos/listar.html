@@ -7,7 +7,11 @@
 	<ol>
 		{% for veiculo in lista_veiculos %}
 		<li>
-			{{ veiculo }}
+			<a href="/veiculos/{{ veiculo.pk }}">
+				{{ veiculo }}
+			</a>
+			 - 
+			<a href="/veiculos/excluir/{{ veiculo.pk }}">EXCLUIR</a>
 		</li>
 		{% endfor %}
 	</ol>

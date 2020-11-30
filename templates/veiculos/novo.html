@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cadastrar Veiculo</title>
+</head>
+<body>
+	<form action="/veiculos" method="POST">
+		{% csrf_token %}
+		{{ form }}
+		<input type="submit" value="Salvar">
+	</form>
+</body>
+</html>

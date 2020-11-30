@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Deletar Veiculo</title>
+</head>
+<body>
+	<form action="/veiculos/excluir/{{ object.pk }}" method="POST">
+		{% csrf_token %}
+		<p>
+			Tem certeza que deseja Deletar o veiculo "{{ object }}" ?
+		</p>
+		<input type="submit" value="Confirmar">
+	</form>
+</body>
+</html>

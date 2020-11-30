@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Editar Veiculo</title>
+</head>
+<body>
+	<form action="/veiculos/{{ object.pk }}" method="POST">
+		{% csrf_token %}
+		{{ form }}
+		<input type="submit" value="Alterar">
+	</form>
+</body>
+</html>

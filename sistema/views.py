@@ -22,8 +22,8 @@ class Autenticacao(View):
 		senha = request.POST.get('senha',None)
 
 		#log no terminal
-		logger.info('Usuario: {usuario}'.format(usuario=usuario))
-		logger.info('Senha: {senha}'.format(senha=senha))
+		#logger.info('Usuario: {usuario}'.format(usuario=usuario))
+		#logger.info('Senha: {senha}'.format(senha=senha))
 
 		#autenticacao
 		user = authenticate(request, username=usuario, password=senha)
