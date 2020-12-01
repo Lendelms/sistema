@@ -5,7 +5,7 @@
 	<title>Deletar Veiculo</title>
 </head>
 <body>
-	<form action="/veiculos/excluir/{{ object.pk }}" method="POST">
+	<form action="/veiculos/excluir/{{ object.pk }}/" method="POST">
 		{% csrf_token %}
 		<p>
 			Tem certeza que deseja Deletar o veiculo "{{ object }}" ?

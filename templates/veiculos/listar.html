@@ -4,6 +4,10 @@
 	<title>Lista de veiculos cadastrados</title>
 </head>
 <body>
+	Data Atual {% now "jS F Y H:i" %}
+
+	<a href="/veiculos/novo">Novo</a>
+
 	<ol>
 		{% for veiculo in lista_veiculos %}
 		<li>

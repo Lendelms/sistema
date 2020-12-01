@@ -5,7 +5,7 @@
 	<title>Editar Veiculo</title>
 </head>
 <body>
-	<form action="/veiculos/{{ object.pk }}" method="POST">
+	<form action="/veiculos/{{ object.pk }}/" method="POST">
 		{% csrf_token %}
 		{{ form }}
 		<input type="submit" value="Alterar">

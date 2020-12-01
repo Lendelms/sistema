@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView
 from veiculos.models import Veiculo
+from django.urls import reverse_lazy
+from veiculos.forms import FormularioVeiculo
 
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -22,7 +24,7 @@ class VeiculosNew(CreateView):
 	model = Veiculo
 	form_class = FormularioVeiculo
 	template_name = 'veiculos/novo.html'
-	success_url = reverse_lazy('cadastrar-veiculos')
+	success_url = reverse_lazy('listar-veiculos')
 
 class VeiculosEdit(UpdateView):
 	"""Update for VeiculosEdit"""
