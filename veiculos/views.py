@@ -19,7 +19,9 @@ class VeiculosList(ListView):
 	context_object_name = 'lista_veiculos'
 	template_name = 'veiculos/listar.html'
 
-class VeiculosNew(CreateView):
+from sistema.utilitarios import AuteticacaoObrigatoria
+
+class VeiculosNew(AuteticacaoObrigatoria, CreateView):
 	"""Create for VeiculosNew"""
 	model = Veiculo
 	form_class = FormularioVeiculo
@@ -33,9 +35,21 @@ class VeiculosEdit(UpdateView):
 	template_name = 'veiculos/editar.html'
 	success_url = reverse_lazy('listar-veiculos')
 
-class VeiculosDelete(DeleteView):
+class VeiculosDelete(AuteticacaoObrigatoria, DeleteView):
 	"""delete for Veiculos"""
 	model = Veiculo
 	template_name = 'veiculos/deletar.html'
-	success_url = reverse_lazy('listar-veiculos')		
+	success_url = reverse_lazy('listar-veiculos')
+
+
+from veiculos.serializers import SerializadorVeiculo
+from rest_framework.generics import ListAPIView
+
+class VeiculosListAPI(ListAPIView):
+	"""docstring for VeiculosListAPI"""
+	serializer_class = SerializadorVeiculo
+
+	def get_queryset(self):
+		return Veiculo.objects.all()
+						
 		
