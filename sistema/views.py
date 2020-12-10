@@ -11,10 +11,11 @@ class Autenticacao(View):
 	def get(self, request):
 		contexto = {
 			'usuario':'Usuário',
-			'senha':'Senha'
+			'senha':'Senha',
+			'mostraerr':'invisible'
 		}
-		# return render(request, 'autenticacao.html', contexto)
 		return render(request, 'autenticacao2.html', contexto)
+		# return render(request, 'autenticacao.html', contexto)
 
 	def post(self,request):
 		#armazena valores requisicao
@@ -34,8 +35,8 @@ class Autenticacao(View):
 				login(request, user)
 				return HttpResponse('Usuario Autenticado com sucesso')
 
-			return render(request, 'autenticacao.html', {'mensagem': 'Usuario inativo'})
+			return render(request, 'autenticacao2.html', {'mensagem':'Usuario inativo', 'mostraerr':'visible'})
 
-		return render(request, 'autenticacao.html', {'mensagem': 'Usuario ou senha incorreto'})
+		return render(request, 'autenticacao2.html', {'mensagem':'Usuario ou senha incorreto','mostraerr':'visible'})
 
 		#return HttpResponse('Em Desenvolvimento')
