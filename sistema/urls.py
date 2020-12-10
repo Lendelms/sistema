@@ -20,5 +20,6 @@ from sistema.views import Autenticacao
 urlpatterns = [
     path('', Autenticacao.as_view(), name='index'),
     path('veiculos/', include('veiculos.urls')),
+    path('dgtask/', include('dgtask.urls')),
     path('admin/', admin.site.urls)
 ]

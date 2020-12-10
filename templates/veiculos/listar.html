@@ -3,22 +3,47 @@
 <head>
 	<title>Lista de veiculos cadastrados</title>
 </head>
+
+{% include 'base/pluginscss.html' %}
+
 <body>
 	Data Atual {% now "jS F Y H:i" %}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm">
+				<a class="btn btn-success btn-lg active" href="/veiculos/novo">Novo</a>
+			</div>
+		</div>
+		<div class="row">
+			<table class="table">
+			  <thead class="thead-dark">
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Marca</th>
+			      <th scope="col">Modelo</th>
+			      <th scope="col">Ano</th>
+			      <th scope="col">Opções</th>
+			    </tr>
+			  </thead>
+			  <tbody>
 
-	<a href="/veiculos/novo">Novo</a>
+				{% for veiculo in lista_veiculos %}
+				<tr>
+					<td>{{ veiculo.pk }}</td>
+					<td>{{ veiculo.marca }}</td>
+					<td>{{ veiculo.modelo }}</td>
+					<td>{{ veiculo.ano_fabricacao }}</td>
+					<!-- <a href="/veiculos/{{ veiculo.pk }}">{{ veiculo }}</a> --> 
+					<td><a class="btn btn-outline-danger btn-lg" href="/veiculos/excluir/{{ veiculo.pk }}">Excluir</a></td>
+				</tr>
+				{% endfor %}
 
-	<ol>
-		{% for veiculo in lista_veiculos %}
-		<li>
-			<a href="/veiculos/{{ veiculo.pk }}">
-				{{ veiculo }}
-			</a>
-			 - 
-			<a href="/veiculos/excluir/{{ veiculo.pk }}">EXCLUIR</a>
-		</li>
-		{% endfor %}
-	</ol>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+{% include 'base/pluginsjs.html' %}
 
 </body>
 </html>
