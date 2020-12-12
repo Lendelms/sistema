@@ -5,6 +5,8 @@ class NivelUsuario(models.Model):
 	idnivelusuario = models.AutoField(primary_key=True)
 	descricao = models.CharField(max_length=100)
 	ativo = models.BooleanField(default=True)
+	def __str__(self):
+		return '{0} - {1}'.format(self.idnivelusuario, self.descricao)
 
 
 class Usuario(models.Model):
@@ -18,6 +20,8 @@ class Usuario(models.Model):
 	telefone = models.CharField(max_length=12)
 	endereco = models.CharField(max_length=100)
 	idnivelusuario = models.ForeignKey(NivelUsuario, on_delete=models.CASCADE)
+	def __str__(self):
+		return '{0} - {1}'.format(self.idusuario, self.nome)
 
 class SistemaCidadeSuporte(models.Model):
 	"""DGtask for SistemaCidadeSuporte"""
@@ -26,6 +30,8 @@ class SistemaCidadeSuporte(models.Model):
 	link = models.CharField(max_length=50)
 	servidor = models.CharField(max_length=50)
 	ipservidor = models.CharField(max_length=20)
+	def __str__(self):
+		return '{0} - {1}'.format(self.idsistemacidadesuporte, self.nome)
 
 class PrioridadeChamado(models.Model):
 	"""docstring for Prioridade chamado"""
@@ -33,12 +39,16 @@ class PrioridadeChamado(models.Model):
 	descprioridade = models.CharField(max_length=20)
 	tempo = models.IntegerField()
 	ativo = models.BooleanField(default=True)
+	def __str__(self):
+		return '{0} - {1}'.format(self.idprioridadechamado, self.descprioridade)
 
 class SituacaoChamado(models.Model):
 	"""docstring for Situacao Chamado"""
 	idsituacaochamado = models.AutoField(primary_key=True)
 	descsituacao = models.CharField(max_length=20)
 	ativo = models.BooleanField(default=True)
+	def __str__(self):
+		return '{0} - {1}'.format(self.idsituacaochamado, self.descsituacao)
 		
 class MensagemChamado(models.Model):
 	"""docstring for Mensagem Chamado"""
@@ -49,6 +59,8 @@ class MensagemChamado(models.Model):
 	idusuariocriou = models.IntegerField()
 	dataregistro = models.DateField(auto_now=True)
 	lido = models.BooleanField(default=False)
+	def __str__(self):
+		return '{0} - {1}'.format(self.idmensagemchamado, self.mensagem)
 
 class Chamado(models.Model):
 	"""docstring for Chamado"""
