@@ -15,7 +15,7 @@ class Usuario(models.Model):
 	nome = models.CharField(max_length=100)
 	cpf = models.CharField(max_length=14,unique=True)
 	datanascimento = models.DateField()
-	password = models.CharField(max_length=80)
+	sexo = models.CharField(choices=[('M', 'MASCULINO'), ('F', 'FEMININO')], max_length=1, blank=True)
 	email = models.CharField(max_length=100)
 	telefone = models.CharField(max_length=12)
 	endereco = models.CharField(max_length=100)

@@ -36,8 +36,8 @@ class Autenticacao(View):
 				return render(request, 'base/basedgtask.html', {'mensagem':'Usuario Bem vindo'})
 				# return HttpResponse('Usuario Autenticado com sucesso')
 
-			return render(request, 'autenticacao2.html', {'mensagem':'Usuario inativo', 'mostraerr':'visible'})
+			return render(request, 'autenticacao2.html', {'mensagem':'Usuario inativo', 'mostraerr':'visible','usuario':'Usuário', 'senha':'Senha'})
 
-		return render(request, 'autenticacao2.html', {'mensagem':'Usuario ou senha incorreto','mostraerr':'visible'})
+		return render(request, 'autenticacao2.html', {'mensagem':'Usuario ou senha incorreto','mostraerr':'visible','usuario':'Usuário', 'senha':'Senha'})
 
 		#return HttpResponse('Em Desenvolvimento')

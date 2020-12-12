@@ -8,11 +8,13 @@ from sistema.utilitarios import AuteticacaoObrigatoria
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return HttpResponse("Hello. You're at the polls index.")
 
 class ListTask(AuteticacaoObrigatoria, ListView):
 	"""docstring for List Tarefas"""
-	model = Chamado
+	# model = Chamado
 	context_object_name = 'lista_tarefas'
-	template_name = 'dgtask/lista_tarefas.html'
+	template_name = 'dgtask/list_task.html'
+	def get_queryset(self):
+		return Chamado.objects.all()
 		

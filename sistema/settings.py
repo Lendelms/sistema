@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 LOGIN_URL='/'
+LOGOUT_URL = '/'
 
 # Application definition
 
