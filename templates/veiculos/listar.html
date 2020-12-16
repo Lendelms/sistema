@@ -33,8 +33,10 @@
 					<td>{{ veiculo.marca }}</td>
 					<td>{{ veiculo.modelo }}</td>
 					<td>{{ veiculo.ano_fabricacao }}</td>
-					<!-- <a href="/veiculos/{{ veiculo.pk }}">{{ veiculo }}</a> --> 
-					<td><a class="btn btn-outline-danger btn-lg" href="/veiculos/excluir/{{ veiculo.pk }}">Excluir</a></td>
+					<td>
+						<a class="btn btn-outline-cian btn-lg" href="/veiculos/{{ veiculo.pk }}">Editar</a>
+						<a class="btn btn-outline-danger btn-lg" href="/veiculos/excluir/{{ veiculo.pk }}">Excluir</a>
+					</td>
 				</tr>
 				{% endfor %}
 

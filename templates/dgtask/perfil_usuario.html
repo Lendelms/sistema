@@ -1,0 +1,71 @@
+{% extends 'base/basedgtask.html' %}
+
+{% block content %}
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> Editar Usuário</b></h5>
+  </header>
+
+{% usu in usuario %}
+  <div class="w3-container">
+    <form action="/dgtask/{{ object.pk }}/" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite Nome">
+        </div>
+        <div class="form-group">
+            <label for="cpf">CPF</label>
+            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite CPF">
+        </div>
+        <div class="form-group">
+            <label for="datanascimento">Data Nascimento</label>
+            <input type="text" class="form-control" id="datanascimento" name="datanascimento">
+        </div>
+        <div class="form-group">
+            <label for="datanascimento">Sexo</label>
+            <select name="sexo" id="sexo">
+              <option value="" selected="">---------</option>
+              <option value="M">MASCULINO</option>
+              <option value="F">FEMININO</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Digite e-mail">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Digite Telefone">
+        </div>
+        <div class="form-group">
+            <label for="endereco">Endereço</label>
+            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Digite Endereço">
+        </div>
+        <div class="form-group">
+            <label for="nivelusuario">Nível Usuário</label>
+            <select name="idnivelusuario" required="" id="idnivelusuario">
+                <option value="" selected="">---------</option>
+                <option value="1">1 - Suporte</option>
+                <option value="2">2 - Desenvolvimento</option>
+                <option value="3">3 - Master</option>
+            </select>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Salvar" />
+    </form>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+    <h4>FOOTER</h4>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  </footer>
+
+  <!-- End page content -->
+</div>
+
+{% endblock content %}

@@ -33,7 +33,7 @@ class Autenticacao(View):
 			#verifica se usuario esta ativo
 			if user.is_active:
 				login(request, user)
-				return render(request, 'base/basedgtask.html', {'mensagem':'Usuario Bem vindo'})
+				return render(request, 'dgtask/list_task.html', {'mensagem':'Usuario Bem vindo','usuario':user.username, 'iduser': user.id})
 				# return HttpResponse('Usuario Autenticado com sucesso')
 
 			return render(request, 'autenticacao2.html', {'mensagem':'Usuario inativo', 'mostraerr':'visible','usuario':'Usuário', 'senha':'Senha'})
