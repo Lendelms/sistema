@@ -6,7 +6,7 @@ class NivelUsuario(models.Model):
 	descricao = models.CharField(max_length=100)
 	ativo = models.BooleanField(default=True)
 	def __str__(self):
-		return '{0} - {1}'.format(self.idnivelusuario, self.descricao)
+		return {'idnivelusuario':self.idnivelusuario,'descricao':self.descricao}
 
 
 class Usuario(models.Model):
@@ -65,11 +65,16 @@ class MensagemChamado(models.Model):
 class Chamado(models.Model):
 	"""docstring for Chamado"""
 	idchamado = models.AutoField(primary_key=True)
-	idusuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+	idusuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=False)
 	idprioridadechamado = models.ForeignKey(PrioridadeChamado, on_delete=models.CASCADE)
 	idsistemacidadesuporte = models.ForeignKey(SistemaCidadeSuporte, on_delete=models.CASCADE)
-	idmensagemchamado = models.ForeignKey(MensagemChamado, on_delete=models.CASCADE)
 	idsituacaochamado = models.ForeignKey(SituacaoChamado, on_delete=models.CASCADE)
 	comentario = models.CharField(max_length=100)
 	ativo = models.BooleanField(default=True)
+	mensagem = models.CharField(max_length=250)
+	data = models.DateField()
+	idusuariocriou = models.IntegerField()
+	dataregistro = models.DateField(auto_now=True)
+	lido = models.BooleanField(default=False)
 
+	# idmensagemchamado = models.ForeignKey(MensagemChamado, on_delete=models.CASCADE)

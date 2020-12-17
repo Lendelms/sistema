@@ -8,56 +8,58 @@
     <h5><b><i class="fa fa-dashboard"></i> Editar Usuário</b></h5>
   </header>
 
-{% usu in usuario %}
+{% for usu in usuario %}
   <div class="w3-container">
-    <form action="/dgtask/{{ object.pk }}/" method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite Nome">
-        </div>
-        <div class="form-group">
-            <label for="cpf">CPF</label>
-            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite CPF">
-        </div>
-        <div class="form-group">
-            <label for="datanascimento">Data Nascimento</label>
-            <input type="text" class="form-control" id="datanascimento" name="datanascimento">
-        </div>
-        <div class="form-group">
-            <label for="datanascimento">Sexo</label>
-            <select name="sexo" id="sexo">
-              <option value="" selected="">---------</option>
-              <option value="M">MASCULINO</option>
-              <option value="F">FEMININO</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="Email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Digite e-mail">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-        </div>
-        <div class="form-group">
-            <label for="telefone">Telefone</label>
-            <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Digite Telefone">
-        </div>
-        <div class="form-group">
-            <label for="endereco">Endereço</label>
-            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Digite Endereço">
-        </div>
-        <div class="form-group">
-            <label for="nivelusuario">Nível Usuário</label>
-            <select name="idnivelusuario" required="" id="idnivelusuario">
-                <option value="" selected="">---------</option>
-                <option value="1">1 - Suporte</option>
-                <option value="2">2 - Desenvolvimento</option>
-                <option value="3">3 - Master</option>
-            </select>
-        </div>
-        <input type="submit" class="btn btn-primary" value="Salvar" />
-    </form>
+    <div class="w3-panel">
+        <form action="/dgtask/{{ usu.idusuario }}/" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite Nome" value="{{ usu.nome }}">
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite CPF" value="{{ usu.cpf }}">
+            </div>
+            <div class="form-group">
+                <label for="datanascimento">Data Nascimento</label>
+                <input type="text" class="form-control" id="datanascimento" name="datanascimento" value="{{ usu.datanascimento }}">
+            </div>
+            <div class="form-group">
+                <label for="datanascimento">Sexo</label>
+                <select name="sexo" id="sexo">
+                  <option value="" selected="">---------</option>
+                  <option value="M">MASCULINO</option>
+                  <option value="F">FEMININO</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Digite e-mail"  value="{{ usu.email }}">
+                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Digite Telefone" value="{{ usu.telefone }}">
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereço</label>
+                <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Digite Endereço" value="{{ usu.endereco }}">
+            </div>
+            <div class="form-group">
+                <label for="nivelusuario">Nível Usuário</label>
+                <select name="idnivelusuario" required="" id="idnivelusuario">
+                    <option value="" selected="">---------</option>
+                    <option value="1">1 - Suporte</option>
+                    <option value="2">2 - Desenvolvimento</option>
+                    <option value="3">3 - Master</option>
+                </select>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Salvar" />
+        </form>
+      </div>
   </div>
-
+{% endfor %}
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-light-grey">
