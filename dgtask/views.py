@@ -23,14 +23,14 @@ class ListTask(AuteticacaoObrigatoria, ListView):
 class UsuarioSel(AuteticacaoObrigatoria, View):
 	"""class baseada para verificar usuarios novos ou já cadastrados"""
 	def get(self, request, pk):
-		usu = Usuario.objects.filter(idusuario=pk)
-		nivelusu = NivelUsuario.objects.all()
-		usuario = {
+		usu = Usuario.objects.values().filter(idusuario=pk)
+		nivelusu = NivelUsuario.objects.values().all()
+		data = {
 			'usuario': usu,
 			'nivelusuario': nivelusu
 		}
 		if usu.count() > 0:
-			return render(request, 'dgtask/perfil_usuario.html', usuario)
+			return render(request, 'dgtask/perfil_usuario.html', data)
 		else:
 			return render(request, 'dgtask/novo_user.html')
 
@@ -59,4 +59,13 @@ class UsuarioNew(AuteticacaoObrigatoria, CreateView):
 	model = Usuario
 	form_class = FormularioUsuario
 	template_name = 'dgtask/novo_user.html'
+	success_url = reverse_lazy('index')
+
+class ChamadoNew(AuteticacaoObrigatoria, CreateView):
+	"""Create for VeiculosNew"""
+	model = Chamado
+	form_class = FormularioChamado
+	# usu = Usuario.objects.values().filter(idusuario=pk)
+	context_object_name =
+	template_name = 'dgtask/novo_chamado.html'
 	success_url = reverse_lazy('index')

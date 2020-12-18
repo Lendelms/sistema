@@ -8,3 +8,11 @@ class FormularioUsuario(forms.ModelForm):
     class Meta:
     	model = Usuario
     	exclude = []
+
+class FormularioChamado(forms.ModelForm):
+    """
+    	Formulario para o model Chamado
+    """
+    class Meta:
+    	model = Chamado
+    	exclude = ['lido', 'idusuariocriou','ativo']

@@ -2,6 +2,7 @@ from django.views.generic import View
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from django.http import HttpResponse
+from dgtask.models import *
 import logging
 
 logger = logging.getLogger(__name__)
@@ -33,7 +34,10 @@ class Autenticacao(View):
 			#verifica se usuario esta ativo
 			if user.is_active:
 				login(request, user)
-				return render(request, 'dgtask/list_task.html', {'mensagem':'Usuario Bem vindo','usuario':user.username, 'iduser': user.id})
+				usu = Usuario.objects.values().filter(idusuario=user.id)
+				# request.session['attusuario'] = usu
+				data = { 'usuario': usu }
+				return render(request, 'dgtask/list_task.html', data)
 				# return HttpResponse('Usuario Autenticado com sucesso')
 
 			return render(request, 'autenticacao2.html', {'mensagem':'Usuario inativo', 'mostraerr':'visible','usuario':'Usuário', 'senha':'Senha'})

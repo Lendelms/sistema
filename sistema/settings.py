@@ -94,7 +94,7 @@ LOGGING = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sistema',
+        'NAME': 'dgtsistema',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',

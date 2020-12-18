@@ -1,0 +1,31 @@
+{% extends 'base/basedgtask.html' %}
+
+{% block content %}
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> Novo Chamado</b></h5>
+  </header>
+
+
+  <div class="w3-container">
+    <form action="/dgtask/novo_chamado/" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Salvar">
+      <input type="reset" value="Limpar">
+    </form>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+    <h4>FOOTER</h4>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  </footer>
+
+  <!-- End page content -->
+</div>
+
+{% endblock content %}

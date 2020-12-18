@@ -6,7 +6,7 @@ class NivelUsuario(models.Model):
 	descricao = models.CharField(max_length=100)
 	ativo = models.BooleanField(default=True)
 	def __str__(self):
-		return {'idnivelusuario':self.idnivelusuario,'descricao':self.descricao}
+		return '{0} - {1}'.format(self.idnivelusuario, self.descricao)
 
 
 class Usuario(models.Model):
@@ -55,7 +55,6 @@ class MensagemChamado(models.Model):
 	idmensagemchamado = models.AutoField(primary_key=True)
 	idusuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 	mensagem = models.CharField(max_length=100)
-	data = models.DateField()
 	idusuariocriou = models.IntegerField()
 	dataregistro = models.DateField(auto_now=True)
 	lido = models.BooleanField(default=False)
@@ -69,12 +68,12 @@ class Chamado(models.Model):
 	idprioridadechamado = models.ForeignKey(PrioridadeChamado, on_delete=models.CASCADE)
 	idsistemacidadesuporte = models.ForeignKey(SistemaCidadeSuporte, on_delete=models.CASCADE)
 	idsituacaochamado = models.ForeignKey(SituacaoChamado, on_delete=models.CASCADE)
+	mensagem = models.CharField(max_length=250,null=True)
+	data = models.DateField(null=True)
 	comentario = models.CharField(max_length=100)
-	ativo = models.BooleanField(default=True)
-	mensagem = models.CharField(max_length=250)
-	data = models.DateField()
-	idusuariocriou = models.IntegerField()
-	dataregistro = models.DateField(auto_now=True)
 	lido = models.BooleanField(default=False)
+	idusuariocriou = models.IntegerField(null=True)
+	dataregistro = models.DateField(auto_now=True)
+	ativo = models.BooleanField(default=True)
 
 	# idmensagemchamado = models.ForeignKey(MensagemChamado, on_delete=models.CASCADE)

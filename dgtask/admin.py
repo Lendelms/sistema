@@ -17,10 +17,10 @@ class SituacaoChamadoAdmin(admin.ModelAdmin):
 	list_display = ['idsituacaochamado', 'descsituacao', 'ativo']
 
 class MensagemChamadoAdmin(admin.ModelAdmin):
-	list_display = ['idmensagemchamado', 'idusuario', 'mensagem', 'data', 'idusuariocriou', 'dataregistro',	'lido']
+	list_display = ['idmensagemchamado', 'idusuario', 'mensagem', 'idusuariocriou', 'dataregistro',	'lido']
 
 class ChamadoAdmin(admin.ModelAdmin):
-	list_display = ['idchamado', 'idusuario', 'idprioridadechamado', 'idsistemacidadesuporte', 'mensagem', 'idsituacaochamado', 'comentario', 'ativo']
+	list_display = ['idchamado', 'idusuario', 'idprioridadechamado', 'idsistemacidadesuporte', 'mensagem', 'data', 'idsituacaochamado', 'comentario', 'ativo']
 
 admin.site.register(NivelUsuario, NivelUsuarioAdmin)
 admin.site.register(Usuario, UsuarioAdmin)
