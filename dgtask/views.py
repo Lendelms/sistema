@@ -65,7 +65,7 @@ class ChamadoNew(AuteticacaoObrigatoria, CreateView):
 	"""Create for VeiculosNew"""
 	model = Chamado
 	form_class = FormularioChamado
-	# usu = Usuario.objects.values().filter(idusuario=pk)
-	context_object_name =
 	template_name = 'dgtask/novo_chamado.html'
 	success_url = reverse_lazy('index')
+	# usu = Usuario.objects.values().filter(idusuario=pk)
+	#context_object_name =

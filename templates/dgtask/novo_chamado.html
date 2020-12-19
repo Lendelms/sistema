@@ -1,7 +1,7 @@
-{% extends 'base/basedgtask.html' %}
+<!-- { % extends 'base/basedgtask.html' % } -->
 
 {% block content %}
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+<div class="w3-main" style="margin-left:300px;margin-top:43px;" id="main">
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
@@ -12,6 +12,7 @@
   <div class="w3-container">
     <form action="/dgtask/novo_chamado/" method="POST">
       {% csrf_token %}
+      {{ form.non_field_errors }}
       {{ form.as_p }}
       <input type="submit" value="Salvar">
       <input type="reset" value="Limpar">

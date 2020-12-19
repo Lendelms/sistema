@@ -14,5 +14,6 @@ class FormularioChamado(forms.ModelForm):
     	Formulario para o model Chamado
     """
     class Meta:
-    	model = Chamado
-    	exclude = ['lido', 'idusuariocriou','ativo']
+        model = Chamado
+        exclude = ['lido', 'idusuariocriou','ativo']
+        labels = {'idusuario': 'Usuario Responsavel','idprioridadechamado': 'Prioridade','idsistemacidadesuporte': 'Cidade','idsituacaochamado': 'Situação'}

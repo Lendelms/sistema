@@ -1,7 +1,7 @@
 {% extends 'base/basedgtask.html' %}
 
 {% block content %}
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+<div class="w3-main" style="margin-left:300px;margin-top:43px;" id="main">
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
@@ -11,7 +11,7 @@
 {% for usu in usuario %}
   <div class="w3-container">
     <div class="w3-panel">
-        <form action="/dgtask/{{ usu.idusuario }}/" method="POST">
+        <form action="/perfil_usuario/{{ usu.idusuario }}/" method="POST">
             {% csrf_token %}
             <div class="form-group">
                 <label for="nome">Nome</label>

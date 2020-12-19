@@ -1,80 +1,86 @@
 {% extends 'base/basedgtask.html' %}
 
 {% block content %}
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+{% load static %}
+<div class="w3-main" style="margin-left:300px;margin-top:43px;" id="main">
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> Início</b></h5>
   </header>
 
-  <div class="w3-row-padding w3-margin-bottom">
-    <a href="/dgtask/novo_chamado"><div class="w3-quarter">
-      <div class="w3-container w3-green w3-padding-16">
-        <div class="w3-left"><i class="fa fa-plus w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3>Adicionar</h3>
+    <div class="w3-row-padding w3-margin-bottom">
+    {% csrf_token %}
+    <!-- <a href="/dgtask/novo_chamado"> -->
+        <div class="w3-quarter" id="newchamado">
+            <div class="w3-container w3-green w3-padding-16">
+            <div class="w3-left"><i class="fa fa-plus w3-xxxlarge"></i></div>
+            <div class="w3-right">
+                <h3>Adicionar</h3>
+            </div>
+            <div class="w3-clear"></div>
+                <h4>Novo Chamado</h4>
+            </div>
         </div>
-        <div class="w3-clear"></div>
-        <h4>Novo Chamado</h4>
-      </div>
-    </div></a>
-    <div class="w3-quarter">
-      <div class="w3-container w3-red w3-padding-16">
-        <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3>52</h3>
+    <!-- </a> -->
+        <div class="w3-quarter">
+            <div class="w3-container w3-red w3-padding-16">
+                <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
+                <div class="w3-right">
+                <h3>0</h3>
+                </div>
+                <div class="w3-clear"></div>
+                <h4>Mensagens</h4>
+            </div>
         </div>
-        <div class="w3-clear"></div>
-        <h4>Mensagens</h4>
-      </div>
+        <div class="w3-quarter">
+            <div class="w3-container w3-blue w3-padding-16">
+                <div class="w3-left"><i class="fa fa-tasks w3-xxxlarge"></i></div>
+                <div class="w3-right">
+                <h3>1</h3>
+                </div>
+                <div class="w3-clear"></div>
+                <h4>Meus Chamados</h4>
+            </div>
+        </div>
+        <div class="w3-quarter">
+            <div class="w3-container w3-orange w3-text-white w3-padding-16">
+                <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                <div class="w3-right">
+                <h3>5</h3>
+                </div>
+                <div class="w3-clear"></div>
+                <h4>Anotações</h4>
+            </div>
+        </div>
     </div>
-    <div class="w3-quarter">
-      <div class="w3-container w3-blue w3-padding-16">
-        <div class="w3-left"><i class="fa fa-tasks w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3>23</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Meus Chamados</h4>
-      </div>
-    </div>
-    <div class="w3-quarter">
-      <div class="w3-container w3-orange w3-text-white w3-padding-16">
-        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3>50</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Anotações</h4>
-      </div>
-    </div>
-  </div>
 
-  <div class="w3-container">
-    <h5>Chamados Recente</h5>
-    <ul class="w3-ul w3-card-4 w3-white">
-      <li class="w3-padding-16">
-        <i class="fa fa-commenting-o w3-xxlarge" style="width:35px"></i>
-        <span class="w3-xlarge"> Titulo Chamado 1</span>
-        <p> Descrição chamado aqui, mensagem detalhes dos serviços</p>
-        <span class="w3-opacity w3-medium"> Data: 17/12/2020 / Usuario Responsável: admin</span>
-      </li>
-      <li class="w3-padding-16">
-        <i class="fa fa-commenting-o w3-xxlarge" style="width:35px"></i>
-        <span class="w3-xlarge">  Titulo Chamado 2</span>
-        <p> Descrição chamado aqui, mensagem detalhes dos serviços</p>
-        <span class="w3-opacity w3-medium"> Data: 10/12/2020 / Usuario Responsável: admin</span>
-      </li>
-      <li class="w3-padding-16">
-        <i class="fa fa-commenting-o w3-xxlarge" class="w3-left w3-circle w3-margin-right" style="width:35px"></i>
-        <span class="w3-xlarge">  Titulo Chamado 3</span>
-        <p> Descrição chamado aqui, mensagem detalhes dos serviços</p>
-        <span class="w3-opacity w3-medium"> Data: 01/12/2020 / Usuario Responsável: admin</span>
-      </li>
-    </ul>
-    <button class="w3-button w3-dark-grey">More Chamados &nbsp;<i class="fa fa-arrow-right"></i></button>
-  </div>
+    <div class="w3-container">
+        <h5>Chamados Recente</h5>
+
+        <ul class="w3-ul w3-card-4 w3-white">
+            <li class="w3-padding-16">
+                <i class="fa fa-commenting-o w3-xxlarge" style="width:35px"></i>
+                <span class="w3-xlarge"> Titulo Chamado 1</span>
+                <p> Descrição chamado aqui, mensagem detalhes dos serviços</p>
+                <span class="w3-opacity w3-medium"> Data: 17/12/2020 / Usuario Responsável: admin</span>
+            </li>
+            <li class="w3-padding-16">
+                <i class="fa fa-commenting-o w3-xxlarge" style="width:35px"></i>
+                <span class="w3-xlarge">  Titulo Chamado 2</span>
+                <p> Descrição chamado aqui, mensagem detalhes dos serviços</p>
+                <span class="w3-opacity w3-medium"> Data: 10/12/2020 / Usuario Responsável: admin</span>
+            </li>
+            <li class="w3-padding-16">
+                <i class="fa fa-commenting-o w3-xxlarge" class="w3-left w3-circle w3-margin-right" style="width:35px"></i>
+                <span class="w3-xlarge">  Titulo Chamado 3</span>
+                <p> Descrição chamado aqui, mensagem detalhes dos serviços</p>
+                <span class="w3-opacity w3-medium"> Data: 01/12/2020 / Usuario Responsável: admin</span>
+            </li>
+        </ul>
+        <button class="w3-button w3-dark-grey">More Chamados &nbsp;<i class="fa fa-arrow-right"></i></button>
+    </div>
+
   <hr>
 
 
@@ -86,5 +92,23 @@
 
   <!-- End page content -->
 </div>
+<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<script type="text/javascript">
+    //$(function(){
+
+        $("#newchamado").click(function(){
+            $.ajax({
+                type: 'POST',
+                url: '/dgtask/novo_chamado/',
+                data: {"csrfmiddlewaretoken": $("input[name='csrfmiddlewaretoken']").val()},
+                dataType: 'html',
+                success: function(result){
+                    $("#pagecontent").html(result);
+                }
+            });
+        });
+
+   // });
+</script>
 
 {% endblock content %}
