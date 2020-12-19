@@ -35,13 +35,13 @@
 	  </div>
 	  <div class="w3-bar-block">
 	    <!-- <a href="#" class="w3-bar-item w3-button w3-hide-large w3-padding-16 w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a> -->
-	    <a href="/dgtask" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-diamond fa-fw"></i>&nbsp; Inicio</a>
-	    <a href="/dgtask/perfil_usuario/{{ usu.idusuario }}" class="w3-bar-item w3-button"><i class="fa fa-users fa-fw"></i>&nbsp; Meu Perfil</a>
-	    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>&nbsp; Chamados</a>
-	    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>&nbsp; Mensagens</a>
-	    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-desktop fa-fw"></i>&nbsp; Servidores</a>
-	    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>&nbsp; History</a>
-	    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a>
+	    <a href="/dgtask" class="w3-bar-item w3-button w3-padding w3-blue" id="inicio"><i class="fa fa-diamond fa-fw"></i>&nbsp; Inicio</a>
+	    <a href="/dgtask/perfil_usuario/{{ usu.idusuario }}" class="w3-bar-item w3-button" id="profile"><i class="fa fa-users fa-fw"></i>&nbsp; Meu Perfil</a>
+	    <a href="#" class="w3-bar-item w3-button w3-padding" id="task"><i class="fa fa-eye fa-fw"></i>&nbsp; Chamados</a>
+	    <a href="#" class="w3-bar-item w3-button w3-padding" id="message"><i class="fa fa-envelope fa-fw"></i>&nbsp; Mensagens</a>
+	    <a href="#" class="w3-bar-item w3-button w3-padding" id="host"><i class="fa fa-desktop fa-fw"></i>&nbsp; Servidores</a>
+	    <a href="#" class="w3-bar-item w3-button w3-padding" id="history"><i class="fa fa-history fa-fw"></i>&nbsp; History</a>
+	    <a href="#" class="w3-bar-item w3-button w3-padding" id="config"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a>
 	  </div>
 	</nav>
 	<!-- Overlay effect when opening sidebar on small screens -->
@@ -73,6 +73,18 @@
 		    	$("#main").css('margin-left', 300)
 		    	status = 'on';
 		  	}
+		});
+
+		$("#inicio").click(function(){
+			$.ajax({
+                type: 'POST',
+                url: '/dgtask/',
+                data: {"csrfmiddlewaretoken": $("input[name='csrfmiddlewaretoken']").val()},
+                dataType: 'html',
+                success: function(result){
+                    $("#pagecontent").html(result);
+                }
+            });
 		});
 
 	</script>

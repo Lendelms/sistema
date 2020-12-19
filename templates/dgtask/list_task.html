@@ -97,6 +97,7 @@
     //$(function(){
 
         $("#newchamado").click(function(){
+            $("#task").addClass('w3-blue');
             $.ajax({
                 type: 'POST',
                 url: '/dgtask/novo_chamado/',

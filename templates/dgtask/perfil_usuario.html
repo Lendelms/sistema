@@ -11,7 +11,7 @@
 {% for usu in usuario %}
   <div class="w3-container">
     <div class="w3-panel">
-        <form action="/perfil_usuario/{{ usu.idusuario }}/" method="POST">
+        <form action="dgtask/perfil_usuario/{{ usu.idusuario }}/" method="POST">
             {% csrf_token %}
             <div class="form-group">
                 <label for="nome">Nome</label>
@@ -49,10 +49,18 @@
             <div class="form-group">
                 <label for="nivelusuario">Nível Usuário</label>
                 <select name="idnivelusuario" required="" id="idnivelusuario">
-                    <option value="" selected="">---------</option>
-                    <option value="1">1 - Suporte</option>
-                    <option value="2">2 - Desenvolvimento</option>
-                    <option value="3">3 - Master</option>
+                    {% if usu.idnivelusuario != 'None' %}
+                      <option value="" selected="">---------</option>
+                    {% else %}
+                      <option value="">---------</option>
+                    {% endif %}
+                  {% for nivelusu in nivelusuario %}
+                    {% if usu.idnivelusuario == nivelusu.idnivelusuario %}
+                      <option value="{{ nivelusu.idnivelusuario }}" selected="">{{ nivelusu.idnivelusuario }} - {{ nivelusu.descricao }}</option>.
+                    {% else %}
+                      <option value="{{ nivelusu.idnivelusuario }}">{{ nivelusu.idnivelusuario }} - {{ nivelusu.descricao }}</option>.
+                    {% endif %}
+                  {% endfor %}  
                 </select>
             </div>
             <input type="submit" class="btn btn-primary" value="Salvar" />
