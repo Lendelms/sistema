@@ -14,11 +14,11 @@ def index(request):
 
 class ListTask(AuteticacaoObrigatoria, ListView):
 	"""docstring for List Tarefas"""
-	model = Chamado
-	context_object_name = 'lista_tarefas'
+	model = Usuario
+	context_object_name = {'usuario', }
 	template_name = 'dgtask/list_task.html'
 	def get_queryset(self):
-		return Chamado.objects.all()
+		return Usuario.objects.values().all()
 
 class UsuarioSel(AuteticacaoObrigatoria, View):
 	"""class baseada para verificar usuarios novos ou já cadastrados"""
@@ -39,15 +39,15 @@ class UsuarioEdit(AuteticacaoObrigatoria, UpdateView):
 	"""Create for VeiculosNew"""
 	model = Usuario
 	form_class = FormularioUsuario
-	def get_object(self, queryset=None):
-		chave = self.kwargs.get("pk")
-		usu = Usuario.objects.filter(idusuario=chave)	
-		if usu.count() > 0:
-			return render(self, 'dgtask/perfil_usuario.html', usu)
-			#template_name = 'dgtask/perfil_usuario.html'
-			#success_url = reverse_lazy('index')
-		else:
-			return render(self, 'dgtask/novo_user.html')
+	template_name = 'dgtask/perfil_usuario.html'
+	success_url = reverse_lazy('index')
+	#def get_object(self, queryset=None):
+		#chave = self.kwargs.get("pk")
+		#usu = Usuario.objects.filter(idusuario=chave)	
+		#if usu.count() > 0:
+			#return render(self, 'dgtask/perfil_usuario.html', usu)
+		#else:
+			#return render(self, 'dgtask/novo_user.html')
 			#template_name = 'dgtask/novo_user.html'
 			#success_url = reverse_lazy('index')
 	# def get_queryset(request):

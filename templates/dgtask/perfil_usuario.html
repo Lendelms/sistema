@@ -11,7 +11,7 @@
 {% for usu in usuario %}
   <div class="w3-container">
     <div class="w3-panel">
-        <form action="dgtask/perfil_usuario/{{ usu.idusuario }}/" method="POST">
+        <form action="/dgtask/perfil_usuario/update/{{ usu.idusuario }}/" method="POST">
             {% csrf_token %}
             <div class="form-group">
                 <label for="nome">Nome</label>
@@ -26,11 +26,21 @@
                 <input type="text" class="form-control" id="datanascimento" name="datanascimento" value="{{ usu.datanascimento }}">
             </div>
             <div class="form-group">
-                <label for="datanascimento">Sexo</label>
+                <label for="datanascimento" id="{{usu.sexo}}">Sexo</label>
                 <select name="sexo" id="sexo">
-                  <option value="" selected="">---------</option>
-                  <option value="M">MASCULINO</option>
-                  <option value="F">FEMININO</option>
+                  {% if usu.sexo == None %}
+                    <option value="" selected="">---------</option>
+                    <option value="M">MASCULINO</option>
+                    <option value="F">FEMININO</option>
+                  {% elif usu.sexo == 'M' %}
+                    <option value="">---------</option>
+                    <option value="M" selected="">MASCULINO</option>
+                    <option value="F">FEMININO</option>
+                  {% else %}
+                    <option value="">---------</option>
+                    <option value="M">MASCULINO</option>
+                    <option value="F" selected="">FEMININO</option>
+                  {% endif %}
                 </select>
             </div>
             <div class="form-group">
@@ -49,16 +59,16 @@
             <div class="form-group">
                 <label for="nivelusuario">Nível Usuário</label>
                 <select name="idnivelusuario" required="" id="idnivelusuario">
-                    {% if usu.idnivelusuario != 'None' %}
+                    {% if usu.idnivelusuario != None %}
                       <option value="" selected="">---------</option>
                     {% else %}
                       <option value="">---------</option>
                     {% endif %}
                   {% for nivelusu in nivelusuario %}
-                    {% if usu.idnivelusuario == nivelusu.idnivelusuario %}
-                      <option value="{{ nivelusu.idnivelusuario }}" selected="">{{ nivelusu.idnivelusuario }} - {{ nivelusu.descricao }}</option>.
+                    {% if usu.idnivelusuario_id == nivelusu.idnivelusuario %}
+                      <option value="{{ nivelusu.idnivelusuario }}" selected="">{{ nivelusu.idnivelusuario }} - {{ nivelusu.descricao }}</option>
                     {% else %}
-                      <option value="{{ nivelusu.idnivelusuario }}">{{ nivelusu.idnivelusuario }} - {{ nivelusu.descricao }}</option>.
+                      <option value="{{ nivelusu.idnivelusuario }}">{{ nivelusu.idnivelusuario }} - {{ nivelusu.descricao }}</option>
                     {% endif %}
                   {% endfor %}  
                 </select>

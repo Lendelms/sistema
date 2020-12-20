@@ -35,7 +35,7 @@ class Autenticacao(View):
 			if user.is_active:
 				login(request, user)
 				usu = Usuario.objects.values().filter(idusuario=user.id)
-				# request.session['attusuario'] = usu
+				request.session['attusuario'] = user.id
 				data = { 'usuario': usu }
 				return render(request, 'dgtask/list_task.html', data)
 				# return HttpResponse('Usuario Autenticado com sucesso')
